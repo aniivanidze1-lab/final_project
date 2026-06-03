@@ -1,0 +1,192 @@
+/* responsive */
+
+@media (max-width: 992px) {
+
+  .features__grid,
+  .dresses__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about__grid,
+  .contact__info {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__content h1 {
+    font-size: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 15px;
+    height: auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav__logo {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .nav-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-search input {
+    width: 180px;
+    height: 42px;
+  }
+
+  .nav-search select {
+    width: 90px;
+    height: 42px;
+  }
+
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+    position: absolute;
+    top: 25px;
+    right: 20px;
+  }
+
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+
+  .nav__list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+
+    width: 260px;
+    height: 100vh;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 90px 30px;
+
+    transition: 0.4s ease;
+    z-index: 1000;
+  }
+
+  .nav__list.active {
+    right: 0;
+  }
+
+  .features__grid,
+  .dresses__grid,
+  .about__grid,
+  .contact__info {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero__content p {
+    font-size: 1rem;
+  }
+
+  .page-hero {
+    height: 50vh;
+  }
+
+  .card img {
+    height: 300px;
+  }
+
+  .card,
+  .feature-card,
+  .contact__form {
+    padding: 25px;
+  }
+
+  .section-title,
+  .about__text h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero__content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero__content p {
+    font-size: 0.95rem;
+  }
+
+  .section-title,
+  .about__text h2 {
+    font-size: 1.7rem;
+  }
+
+  .card img {
+    height: 240px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-search {
+    gap: 8px;
+  }
+
+  .nav-search input {
+    width: 140px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .nav-search select {
+    width: 75px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .nav__logo {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    width: 50px;
+    height: 50px;
+  }
+}
