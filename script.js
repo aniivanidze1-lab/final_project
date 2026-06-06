@@ -200,15 +200,21 @@ if (form) {
     form.reset();
   });
 }
-const btn = document.getElementById("theme-toggle");
+document.addEventListener("DOMContentLoaded", () => {
 
-btn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+  const btnDesktop = document.getElementById("theme-toggle");
+  const btnMobile = document.getElementById("theme-toggle-mobile");
 
-  btn.textContent =
-    document.body.classList.contains("dark-mode")
-      ? "☀️"
-      : "🌙";
+  function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+
+    if (btnDesktop) btnDesktop.textContent = isDark ? "☀️" : "🌙";
+    if (btnMobile) btnMobile.textContent = isDark ? "☀️" : "🌙";
+  }
+
+  if (btnDesktop) btnDesktop.addEventListener("click", toggleTheme);
+  if (btnMobile) btnMobile.addEventListener("click", toggleTheme);
+
 });
-
-loadData();

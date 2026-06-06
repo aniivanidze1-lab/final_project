@@ -1,5 +1,4 @@
-/* responsive */
-
+/* Responsive Styles */
 @media (max-width: 992px) {
 
   .features__grid,
@@ -24,11 +23,9 @@
 @media (max-width: 768px) {
 
   .nav {
-    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
     padding: 20px 15px;
     height: auto;
   }
@@ -36,13 +33,47 @@
   .brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    gap: 10px;
+    width: auto;
   }
 
   .nav__logo {
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .nav-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  #theme-toggle-mobile {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgb(247, 198, 208);
+
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  body.dark-mode #theme-toggle-mobile {
+   background: rgb(247, 198, 208);
+    color: #fff;
   }
 
   .nav-search {
@@ -68,9 +99,7 @@
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 20px;
+    z-index: 1200;
   }
 
   .burger span {
@@ -78,7 +107,13 @@
     height: 3px;
     background: #1a1a1a;
     border-radius: 10px;
+    transition: 0.3s ease;
   }
+
+  body.dark-mode .burger span {
+    background: #f2f2f2;
+  }
+
 
   .nav__list {
     position: fixed;
@@ -86,17 +121,21 @@
     right: -100%;
     width: 260px;
     height: 100vh;
-    background: white;
+    background: #fff;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 90px 30px;
     transition: 0.4s ease;
-    z-index: 1000;
+    z-index: 1100;
   }
 
   .nav__list.active {
     right: 0;
+  }
+
+  body.dark-mode .nav__list {
+    background: #121218;
   }
 
   .features__grid,
@@ -106,6 +145,7 @@
     grid-template-columns: 1fr;
   }
 
+  /* TYPO */
   .hero__content h1 {
     font-size: 2.2rem;
   }
@@ -133,21 +173,11 @@
     font-size: 2rem;
   }
 
-  
-  body.dark-mode .nav__list{
-    background:#121218;
+  #theme-toggle {
+    display: none !important;
   }
+}
 
-  body.dark-mode .burger span{
-    background:#f2f2f2;
-  }
-  .theme-btn{
-  position:absolute;
-  top:25px;
-  right:65px; 
-  z-index:1100;
-}
-}
 @media (max-width: 480px) {
 
   .hero__content h1 {
