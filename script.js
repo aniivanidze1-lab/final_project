@@ -45,9 +45,7 @@ function loadData() {
   }
 }
 
-// ===============================
-// 5. RENDER PRODUCTS
-// ===============================
+
 const container = document.querySelector(".dresses__grid");
 
 function renderProducts(products) {
@@ -202,5 +200,15 @@ if (form) {
     form.reset();
   });
 }
+const btn = document.getElementById("theme-toggle");
+
+btn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+
+  btn.textContent =
+    document.body.classList.contains("dark-mode")
+      ? "☀️"
+      : "🌙";
+});
 
 loadData();

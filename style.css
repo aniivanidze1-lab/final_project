@@ -559,3 +559,48 @@ img{
   text-align:center;
   padding:40px 0;
 }
+/* Dark Mode */
+
+body.dark-mode{
+  background:#121212;
+  color:#eee;
+}
+
+body.dark-mode header,
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .info-card,
+body.dark-mode .contact__form{
+  background:#1e1e1e;
+}
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li{
+  color:#eee;
+}
+
+body.dark-mode a{
+  color:#f7c6d0;
+}
+.theme-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:#f7c6d0;
+  cursor:pointer;
+  font-size:18px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.theme-btn:hover{
+  transform:scale(1.1);
+  background:#e89aa8;
+}
