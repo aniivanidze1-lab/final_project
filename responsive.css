@@ -51,11 +51,11 @@
   }
 
   #theme-toggle-mobile {
-    position: static !important;
-    top: auto !important;
-    right: auto !important;
+    position: static;
+    top: auto;
+    right: auto;
 
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
 
