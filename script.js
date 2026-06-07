@@ -185,8 +185,6 @@ if (form) {
     form.reset();
   });
 }
-
-// theme toggle
 document.addEventListener("DOMContentLoaded", () => {
   const btnDesktop = document.getElementById("theme-toggle");
   const btnMobile = document.getElementById("theme-toggle-mobile");
@@ -203,6 +201,5 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnDesktop) btnDesktop.addEventListener("click", toggleTheme);
   if (btnMobile) btnMobile.addEventListener("click", toggleTheme);
 
-  // initial load
   loadData();
 });
