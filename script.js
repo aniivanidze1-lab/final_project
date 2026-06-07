@@ -8,6 +8,7 @@ if (burger && menu) {
   });
 }
 
+// products
 const dresses = [
   { id: 1, title: "Royal Wedding Dress", price: 450, rating: 5, image: "../images/dress1.jpg" },
   { id: 2, title: "Elegant Evening Dress", price: 250, rating: 4, image: "../images/dress2.jpg" },
@@ -15,10 +16,8 @@ const dresses = [
 ];
 
 let allProducts = [...dresses];
-let filteredProducts = [...dresses];
 
 // loader & error
-
 const loader = document.createElement("div");
 loader.innerText = "იტვირთება...";
 document.body.appendChild(loader);
@@ -27,27 +26,10 @@ const errorBox = document.createElement("div");
 errorBox.style.display = "none";
 document.body.appendChild(errorBox);
 
-// load data
-
-function loadData() {
-  try {
-    loader.style.display = "block";
-
-    setTimeout(() => {
-      renderProducts(filteredProducts);
-      loader.style.display = "none";
-    }, 600);
-
-  } catch (err) {
-    loader.style.display = "none";
-    errorBox.innerText = "დაფიქსირდა შეცდომა";
-    errorBox.style.display = "block";
-  }
-}
-
-
+// container
 const container = document.querySelector(".dresses__grid");
 
+// render products
 function renderProducts(products) {
   if (!container) return;
 
@@ -68,74 +50,76 @@ function renderProducts(products) {
   });
 }
 
-
-// search function
+// filter function (search)
 function filterProducts(products, query) {
-  if (query.trim() === "") {
-    return products;
-  }
+  if (!query || query.trim() === "") return products;
 
   const lowerQuery = query.trim().toLowerCase();
-  const result = [];
 
-  for (let i = 0; i < products.length; i++) {
-    const title = products[i].title.toLowerCase();
-
-    if (title.indexOf(lowerQuery) !== -1) {
-      result.push(products[i]);
-    }
-  }
-
-  return result;
+  return products.filter(p =>
+    p.title.toLowerCase().includes(lowerQuery)
+  );
 }
 
 // sort function
 function sortProducts(products, sortKey) {
-  const sorted = products.slice();
+  const sorted = [...products];
+
+  if (!sortKey || sortKey === "") return sorted;
 
   if (sortKey === "price-asc") {
     sorted.sort((a, b) => a.price - b.price);
-  }
-
-  else if (sortKey === "price-desc") {
+  } else if (sortKey === "price-desc") {
     sorted.sort((a, b) => b.price - a.price);
-  }
-
-  else if (sortKey === "rating-desc") {
+  } else if (sortKey === "rating-desc") {
     sorted.sort((a, b) => b.rating - a.rating);
-  }
-
-  else if (sortKey === "alphabet") {
+  } else if (sortKey === "alphabet") {
     sorted.sort((a, b) => a.title.localeCompare(b.title));
   }
 
   return sorted;
 }
 
+// MAIN FUNCTION (fixes everything)
+function updateUI() {
+  const searchValue = search ? search.value : "";
+  const sortValue = sort ? sort.value : "";
+
+  const filtered = filterProducts(allProducts, searchValue);
+  const sorted = sortProducts(filtered, sortValue);
+
+  renderProducts(sorted);
+}
+
+// loader
+function loadData() {
+  try {
+    loader.style.display = "block";
+
+    setTimeout(() => {
+      updateUI();
+      loader.style.display = "none";
+    }, 600);
+
+  } catch (err) {
+    loader.style.display = "none";
+    errorBox.innerText = "დაფიქსირდა შეცდომა";
+    errorBox.style.display = "block";
+  }
+}
+
+// search
 const search = document.querySelector("#search");
 
 if (search) {
-  search.addEventListener("input", (e) => {
-    const value = e.target.value;
-
-    filteredProducts = filterProducts(allProducts, value);
-
-    const sorted = sortProducts(filteredProducts, sort.value);
-
-    renderProducts(sorted);
-  });
+  search.addEventListener("input", updateUI);
 }
 
+// sort
 const sort = document.querySelector("#sort");
 
 if (sort) {
-  sort.addEventListener("change", (e) => {
-    const value = e.target.value;
-
-    const sorted = sortProducts(filteredProducts, value);
-
-    renderProducts(sorted);
-  });
+  sort.addEventListener("change", updateUI);
 }
 
 // accordion
@@ -151,6 +135,8 @@ document.querySelectorAll(".accordion-btn").forEach(btn => {
     }
   });
 });
+
+// form validation
 const form = document.querySelector(".contact__form form");
 
 if (form) {
@@ -196,12 +182,12 @@ if (form) {
     }
 
     alert("შეტყობინება წარმატებით გაიგზავნა");
-
     form.reset();
   });
 }
-document.addEventListener("DOMContentLoaded", () => {
 
+// theme toggle
+document.addEventListener("DOMContentLoaded", () => {
   const btnDesktop = document.getElementById("theme-toggle");
   const btnMobile = document.getElementById("theme-toggle-mobile");
 
@@ -217,4 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnDesktop) btnDesktop.addEventListener("click", toggleTheme);
   if (btnMobile) btnMobile.addEventListener("click", toggleTheme);
 
+  // initial load
+  loadData();
 });
